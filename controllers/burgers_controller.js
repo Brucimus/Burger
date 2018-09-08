@@ -4,10 +4,29 @@ var router = express.Router();
 
 var burger = require("../models/burger.js");
 
+var undevouredData = [];
+var devouredData = [];
+
 router.get("/", function(req, res) {
     burger.all(function(data) {
+        undevouredData = [];
+        devouredData = [];
+
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].devoured == false) {
+                undevouredData.push(data[i]);
+            }
+        }
+
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].devoured == true) {
+                devouredData.push(data[i]);
+            }
+        }
         var burgersObject = {
-            burger: data
+            burger: data,
+            uneatenBurger: undevouredData,
+            eatenBurger: devouredData
         };
         console.log(burgersObject);
         res.render("index", burgersObject);
