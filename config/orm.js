@@ -1,16 +1,6 @@
 // Import MySQL connection.
 var connection = require("./connection.js");
 
-function printQuestionMarks(num) {
-    var arr = [];
-
-    for (var i = 0; i < num; i++) {
-        arr.push("?");
-    }
-
-    return arr.toString();
-}
-
 // Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
     var arr = [];
@@ -45,7 +35,9 @@ var orm = {
         });
     },
     insertOne: function(table, columns, values, callback) {
-        var queryString = "INSERT INTO " + table + " (" + columns.toString() + ") VALUES ( " + printQuestionMarks(values.length) + ") ";
+        // console.log(columns.toString());
+        // console.log(values);
+        var queryString = "INSERT INTO " + table + " (" + columns + ") VALUES (?) ";
         // console.log(queryString);
         connection.query(queryString, values, function(err, result) {
             if (err) {
