@@ -1,1 +1,1 @@
-INSERT INTO burgers (name) VALUES ("Hamburger"),("Cheeseburger"),("Portobello Burger"),("Veggie Burger"),("Turkey Burger");
+INSERT INTO burgers (burger_name) VALUES ("Hamburger"),("Cheeseburger"),("Portobello Burger"),("Veggie Burger"),("Turkey Burger");
