@@ -1,7 +1,7 @@
-<li>
-	{{burger_name}}
-
-	<button class="eat" data-id="{{id}}" data-eaten="{{devoured}}">
+{{!-- uneaten burger partial --}}
+<li class="list-group-item">
+	<button type="button" class="eat btn btn-outline-secondary btn-sm" data-id="{{id}}" data-eaten="{{devoured}}">
 		EAT ME!
 	</button>
+	{{burger_name}}
 </li>

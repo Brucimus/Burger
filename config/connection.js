@@ -1,6 +1,7 @@
 // Set up MySQL connection.
 var mysql = require("mysql");
 
+//connection
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,

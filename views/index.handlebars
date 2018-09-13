@@ -1,27 +1,32 @@
-<h1>Burgers</h1>
+{{!-- Jumbotron --}}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Burgers</h1>
+    <p class="lead">What kind of burger would you like?</p>
+  </div>
+</div>
 
-<h2>What kind of burger would you like?</h2>
+{{!-- Form for Submitting a Burger --}}
+<form class="form-inline make-burger">
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="burgerForm" class="sr-only">Burger</label>
+    <input type="text" class="form-control" id="burgerForm" name="name" placeholder="Burger">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+</form>
 
-<h3>uneaten</h3>
-<ul>
+{{!-- Listing of uneaten burgers --}}
+<h3 class="burger-header">Uneaten</h3>
+<ul class="list-group">
   {{#each uneatenBurger}}
     {{> burgers/uneaten-block}}
   {{/each}}
 </ul>
 
-<h3>devoured</h3>
-<ul>
+{{!-- Listing of eaten burgers --}}
+<h3 class="burger-header">Devoured</h3>
+<ul class="list-group">
   {{#each eatenBurger}}
       {{> burgers/eaten-block}}
   {{/each}}
 </ul>
-
-<form class="make-burger">
-
-  <div class="form-group">
-    <label for="burgerForm">Add a Burger:</label>
-    <input type="text" id="burgerForm" name="name">
-  </div>
-
-  <button type="submit">Submit</button>
-</form>

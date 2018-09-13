@@ -1,28 +1,35 @@
+//requirements
 var express = require("express");
-
 var router = express.Router();
-
 var burger = require("../models/burger.js");
 
+//initialize devoured and not yet devoured burger arrays
 var undevouredData = [];
 var devouredData = [];
 
+//data listed on index page
 router.get("/", function(req, res) {
     burger.all(function(data) {
+        
+        //empy out devoured and uneaten burger arrays
         undevouredData = [];
         devouredData = [];
 
+        //create list of yet to be eaten burger data
         for (var i = 0; i < data.length; i++) {
             if (data[i].devoured == false) {
                 undevouredData.push(data[i]);
             }
         }
 
+        //create list of devoured burger data
         for (var i = 0; i < data.length; i++) {
             if (data[i].devoured == true) {
                 devouredData.push(data[i]);
             }
         }
+
+        //create burgers object with overall, eaten, and uneaten burger data
         var burgersObject = {
             burger: data,
             uneatenBurger: undevouredData,
@@ -33,6 +40,7 @@ router.get("/", function(req, res) {
     });
 });
 
+//api info for overall burgers
 router.post("/api/burgers", function(req, res) {
     console.log(req.body.burger_name);
     burger.create("burger_name", req.body.burger_name, function(result) {
@@ -41,6 +49,7 @@ router.post("/api/burgers", function(req, res) {
     });
 });
 
+//api info for specific burger
 router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
 
@@ -62,4 +71,5 @@ router.put("/api/burgers/:id", function(req, res) {
     );
 });
 
+//export router
 module.exports = router;

@@ -24,7 +24,10 @@ function objToSql(ob) {
     return arr.toString();
 }
 
+//ORM Variable
 var orm = {
+
+    //Select All Function Object
     selectAll: function(tableInput, callback) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err, result) {
@@ -34,6 +37,8 @@ var orm = {
             callback(result);
         });
     },
+
+    //Insert One Item into table Function Object
     insertOne: function(table, columns, values, callback) {
         // console.log(columns.toString());
         // console.log(values);
@@ -46,6 +51,8 @@ var orm = {
             callback(result);
         });
     },
+
+    //Update One Item on table Function Object
     updateOne: function(table, value, condition, callback) {
         var queryString = "UPDATE " + table + " SET " + objToSql(value) + " WHERE " + condition;
         // console.log(queryString);
@@ -59,4 +66,5 @@ var orm = {
     }
 }
 
+//Export ORM Object
 module.exports = orm;
