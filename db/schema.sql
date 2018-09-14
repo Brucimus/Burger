@@ -5,5 +5,6 @@ CREATE TABLE burgers (
     id int NOT NULL AUTO_INCREMENT,
     burger_name VARCHAR(255),
     devoured BOOLEAN DEFAULT FALSE,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(id)
 );
